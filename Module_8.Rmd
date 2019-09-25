@@ -93,6 +93,8 @@ manipulate(
 
 ## *CHALLENGES*
 
+**CHALLENGE 1**
+
 Write a function to simulate rolling a die where you pass the number of rolls as an argument. Then, use your
 function to simulate rolling two dice 1000 times and take the sum of the rolls. Plot a histogram of those
 results.
@@ -163,3 +165,46 @@ UNION (*which is what the U like symbol stands for*)
     If event ***A*** and ***B*** are *dependent*, then:
     
     *Pr*(***A*** | ***B***) ≠ *Pr*(***A***)
+    
+**CHALLENGE 2**
+
+You have a deck of 52 cards, Ace to 10 + 3 face cards in each suit. You draw a card at random.
+
+* What is the probability that you draw a *face card*?
+
+    *Pr*(***face card***) = 12 (*number of total face cards*) / 52 (*number of total cards*) = .231 (23.1%)
+    
+* What is the probability that you draw a *King*?
+
+    *Pr*(***King***) = 4 (*number of total King cards*) / 52 (*number of total cards*) = .077 (7.7%)
+
+* What is the probability that you draw a *spade*?
+
+    *Pr*(***spade***) = 13 (*number of spade cards*) / 52 (*number of total cards*) = .25 (25%)
+    
+* What is the probability that you draw a *spade* ***given*** that you draw a *face card*?
+
+    *Pr*(***spade*** | ***face card***) = *Pr*(***spade*** ⋂ ***face card***) ÷ *Pr*(***face card***)
+    
+    *Pr*(***spade***) = .25 (see above)
+    
+    *Pr*(***face card***) = .231 (see above)
+    
+    Therefore:
+    
+    *Pr*(***spade*** ⋂ ***face card***) = .25 x .231 (see **Probability Rules**) = .058
+    
+    Therefore: 
+    
+    *Pr*(***spade*** ⋂ ***face card***) ÷ *Pr*(***face card***) = .058 / .231 = .25
+    
+    So, the probability that you draw a *spade* ***given*** that you draw a *face card* is .25 or 25%
+    
+    *This makes sense! If you know that the card drawn is a face card, there is still a 25% chance that the card
+    is a spade, since there are the same number of face cards in each of the four suites of cards (e.g.
+    spade,heart, club, diamond).*
+    
+* 
+    
+    
+    
