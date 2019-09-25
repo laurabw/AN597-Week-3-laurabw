@@ -117,4 +117,49 @@ hist(two_dice,breaks=c(1.5:12.5), probability = TRUE, main="Rolling Two Dice", x
     while 1 means it happens all the time, and a decimal between 0 and 1 would represent the precentage of how
     often it happens*
     
-4. 
+4. *Pr*(***A***⋃***B***) = Probability that a particular event ***A*** -*OR*- a particular event ***B*** occurs
+UNION (*which is what the U like symbol stands for*)
+
+    **Formula**: *Pr*(***A***⋃***B***) = *Pr*(***A***) + *Pr*(***B***) - *Pr*(***A***⋂***B***)
+
+    If event A and B are *mutually exclusive*, then this simplifies to *Pr*(***A***) + *Pr*(***B***) (*just
+    the addition of the probability of **A** happening to the probability of **B** happening since mutually
+    exclusive means they cannot happen at the same time*)
+    
+5. *Pr*(***A***⋂***B***) = Probability that both ***A*** and ***B*** occur *simultaneously* = INTERSECTION
+(*which is what the upside down U like symbol represents*)
+
+    **Formulas**: *Pr*(***A***⋂***B***) = *Pr*(***A*** | ***B***) × *Pr*(***B***) = *Pr*(***B*** | ***A***) × *Pr*(***A***)
+
+    where the pipe operator ( | ) can be read as “given”.
+
+    If the 2 events are *independent* (i.e., if the probability of one *does not* depend on the probability of
+    the other), then *Pr*(***A***⋂***B***) simplifies to:
+
+    *Pr*(***A***) × *Pr*(***B***)
+
+    If *Pr*(***A***⋂***B***) = 0, then we say the events are *mutually exclusive* (e.g., you cannot have a die
+    roll be 1 **AND** 2 simultaneously)
+    
+6. *Pr*(***Ā***) = Probability of the complement of A (i.e., not A) 
+
+    **Formula**: 1 - *Pr*(***A***) (which makes sense if we think of the idea that *Pr*(***A***) will always be
+    between 0 and 1 with 0 being it not happening and 1 being it happening always. So, if we think of 1 as the
+    full chance of something happening, and we subtract the actual percentage of the time it *does* happen
+    [expressed as a decimal], we are left with the time it *does not* happen, which is the *complement*) 
+    
+7. *Conditional Probability * is the probability of an event occuring after taking into account the occurrence of another event, i.e., one event is *conditioned* on the occurrence of a different event.
+
+    For example, the probability of a die coming up as a “1” given that we know the die came up as an odd number
+    (“1”, “3”, or “5”). *So we are looking at the probability of it being a 1 out of the three odd numbers we
+    know it to be.*
+
+    **Formula:** *Pr*(***A*** | ***B***) = *Pr*(***A***⋂***B***) ÷ *Pr*(***B***)
+
+    If event ***A*** and event ***B*** are *independent*, then:
+    
+    *Pr*(***A*** | ***B***) = [*Pr*(***A***) × *Pr*(***B***)] ÷ *Pr*(***B***) = *Pr*(***A***)
+
+    If event ***A*** and ***B*** are *dependent*, then:
+    
+    *Pr*(***A*** | ***B***) ≠ *Pr*(***A***)
