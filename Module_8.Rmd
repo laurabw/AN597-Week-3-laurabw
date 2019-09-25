@@ -194,17 +194,50 @@ You have a deck of 52 cards, Ace to 10 + 3 face cards in each suit. You draw a c
     
     *Pr*(***spade*** ⋂ ***face card***) = .25 x .231 (see **Probability Rules**) = .058
     
-    Therefore: 
     
-    *Pr*(***spade*** ⋂ ***face card***) ÷ *Pr*(***face card***) = .058 / .231 = .25
+* What is the probability that you draw a King given that you draw a face card?
+
+    *Pr*(***King*** | ***face card***) = *Pr*(***King*** ⋂ ***face card***) ÷ *Pr*(***face card***)
     
-    So, the probability that you draw a *spade* ***given*** that you draw a *face card* is .25 or 25%
+    *Pr*(***King***) = .077 (see above)
     
-    *This makes sense! If you know that the card drawn is a face card, there is still a 25% chance that the card
-    is a spade, since there are the same number of face cards in each of the four suites of cards (e.g.
-    spade,heart, club, diamond).*
+    *Pr*(***face card***) = .231 (see above)
     
-* 
+    Therefore:
+    
+    *Pr*(***King*** ⋂ ***face card***) = .077 x .231 (see **Probability Rules**) = .018
+    
+
+    
+* What is the probability that you draw a card that is **both** from a *red suit* (hearts or diamonds) **and** a
+*face card*?
+
+    *Pr*(***A***) = *red suit* = 26/52 = 1/2
+
+    *Pr*(***B***) = *face card* = 12/52 =
+
+    *Pr*(***A*** | ***B***) = *red suit* given *face card* = 6/12
+
+    *Pr*(***A***⋂***B***) = *Pr*(***A*** | ***B***) × *Pr*(***B***) = 6/12 × 12/52 = 6/52 = 0.1153846
+    
+* What is the probability that you draw a card that is **either** a *club* **or not** a *face card*?
+
+    *Pr*(***A***) = *club* = 13/52 = 13/52
+
+    *Pr*(***B***) = *not a face card* = 40/52 (*which is the complement to probability of being a face card*)
+
+    *Pr*(***A***⋂***B***) = *club* and *not a face card* = 10/52
+
+    *Pr*(***A***⋃***B***) = *Pr*(***A***) + *Pr*(***B***) - *Pr*(***A***⋂***B***) = 13/52 + 40/52 - 10/52 = 43/52
+    
+
+    
+    
+    
+    
+    
+    
+    
     
     
     
