@@ -1,5 +1,5 @@
 ---
-title: "laurabw_OriginalHomeworkCode_02"
+title: "Original Code for Homework #2"
 author: "Laura Brubaker-Wittman"
 date: "9/24/2019"
 output: html_document
@@ -28,7 +28,7 @@ l <- 15 # How many we expect in an hour
 ppois(q = x, l)
 ```
 
-    So, based on this, the probability of hearing 9 or more titi calls is 56.8%
+So, based on this, the probability of hearing 9 or more titi calls is 56.8%
 
 2. *What is the probability that she will hear no calls in a session?*
 
@@ -44,7 +44,7 @@ ppois(q = 0, l)
     
 3. *What is the probability that she will hear exactly 3 calls in a session?*
 
-    Well, it seemed to work with setting it for just ) in the last question, let's see what happens when we set x
+    Well, it seemed to work with setting it for just O in the last question, let's see what happens when we set x
     at 3 and not a range like in question 1.
     
 ```{r}
@@ -53,7 +53,7 @@ l <- 15
 ppois(q = x, l)
 ```
 
-Ok, still a *really* number. While if the average is 15 and 3 is way below that, so a small probability for
+Ok, still a *really* small number. While if the average is 15 and 3 is way below that, so a small probability for
 exactly 3 makes sense, I am not sure if this is how we sent up the function for this type of question.
 
 4. *Plot the relevant Poisson mass function over the values in range 0 ≤ x ≤ 30.*
@@ -71,5 +71,56 @@ WHAT?! Look at that! It kind of makes sense too, that the distribution for highe
 would be around 15, which is the average, and then taper off towards either end. I hope this is correct... or at
 least some version of correct!  
 
+5. *Simulate 104 results from this distribution (i.e., 2 years of Saturday monitoring sessions).*
 
+    Ok, from class, I believe this is where we need to do some **bootstrapping**!
+    
+    From googling and using the **Help** section in *R Studio*, I think we can use the function rpois() to do
+    a simulation. It might not be right, but let's give it a shot!
+
+```{r}
+x <- 104 # number of random values we want to return
+l <- 15 # average of titi calls heard during a session, AKA our lamda for this problem
+rpois(x,l)
+```
+
+Ok, so this is the random set of numbers it built based on that infomration! Makes sense, and it would be
+different every time.    
+
+6. *Plot the simulated results using hist() and use xlim() to set the horizontal limits to be from 0 to 30. How
+does your histogram compare to the shape of the probability mass function you plotted above?*
+
+This took awhile to figure out and had to play with several components, looking up references from the modules,
+online, and the **Help** section in *R Studio*. Here is the code and output:
+    
+```{r}
+hist(x = (rpois(x,l)), 
+     breaks = 0:30, 
+     main = "Frequency of Titi Monkey Calls over 2 Years",
+     xlab = "Number of Calls",
+     xlim = c(0,30)
+)
+```
+ 
+This distribution makes sense, even though we have very few to no results for the numbers at either end of the
+x-axis. It looks similar to the one created above, and it would probably look more and more like it over time
+with more and more sessions. 
+
+## 5 Challenges:
+
+1. I had to teach myself a lot of the statistics and knowing which each of the component of the Poisson
+Distribution formula meant. Once I watched a couple videos on YouTube, it started to make more sense!
+
+2. Still not completely comfortable about the differences between dpois and ppois, though the cumulative aspect
+of ppois makes sense. 
+
+3. Figuring out all the components of the barplots and histograms and how they need to be set up! The **Help**
+section in *R Studio* did provide a lot of guidance in this, but I still feel like I am just patching everything
+together each time. Hoping it will become more second nature with practice.
+
+4. Not sure if the answers for #2 and #3 are correct? Very small probabilities make sense, but want to know if I
+am setting up the functions correctly.
+
+5. Just feeling really rusty with stats in general and feeling a bit overwhelmed with all the more advanced
+topics as I have not done even basic stats for awhile! But again, this will just take time and practice.
     
