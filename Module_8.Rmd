@@ -443,3 +443,11 @@ barplot(probset,names.arg=x,space=0,xlab="x",ylab="Pr(X = x)",main="Probability 
 **IMPORTANT!** We can also use the built in probability function for the **Poisson Distribution**, ppois(), to
 return the value of the cumulative distributuion function, i.e., the probability of observing up to and
 including a specific number of events in the given interval.
+
+Here is an example:
+
+```{r}
+x <- 0:10
+l <- 3.5
+barplot(ppois(q=x,lambda=l),ylim=0:1,space=0, names.arg=x,xlab="x",ylab="Pr(X ≤ x)",main="Cumulative Probability")
+```
