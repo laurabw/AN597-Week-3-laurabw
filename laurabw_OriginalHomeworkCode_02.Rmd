@@ -55,3 +55,21 @@ ppois(q = x, l)
 
 Ok, still a *really* number. While if the average is 15 and 3 is way below that, so a small probability for
 exactly 3 makes sense, I am not sure if this is how we sent up the function for this type of question.
+
+4. *Plot the relevant Poisson mass function over the values in range 0 ≤ x ≤ 30.*
+
+    Ok, here is where it starts getting tricky! Let's see what we can do:
+
+```{r}
+x <- 0:30
+l <- 15
+barplot(dpois(x=x,l),names.arg=x,space=0,xlab="Number of Calls",ylab="Probability of Call
+Frequency",main="Probability of Titi Monkey Call Frequencies")
+```
+
+WHAT?! Look at that! It kind of makes sense too, that the distribution for highest call frequency probability
+would be around 15, which is the average, and then taper off towards either end. I hope this is correct... or at
+least some version of correct!  
+
+
+    
