@@ -230,10 +230,135 @@ You have a deck of 52 cards, Ace to 10 + 3 face cards in each suit. You draw a c
 
     *Pr*(***A***⋃***B***) = *Pr*(***A***) + *Pr*(***B***) - *Pr*(***A***⋂***B***) = 13/52 + 40/52 - 10/52 = 43/52
     
+# Random Variables
 
+A **random variable** is a variable whose outcomes are assumed to arise by chance or according to some random or
+stochastic mechanism. The chances of observing a specific interval has associated with it a **probability**.
+
+Random variables come in **two** varieties:
+
+1. *Discrete Random Variables* are random variables that can assume only a countable number of discrete
+possibilies (e.g., counts of outcomes in a particular category). We can assign a probability to each possible
+outcome. For example, with a die, each outcome of rolling a 1 -6 would be an equal 1/6 chance, while if a die had
+the same number on multiple sides, the probability of rolling any given number may be differ.
+
+2. *Contious Random Variables* are random variables that can assume any real number value within a given range
+(e.g., measurements). We cannot assign a specific probability to each possible outcome value as the set of
+possible outcomes is infinite, but we can assign probabilities to *intervals* of outcome values.
+
+With these basics in mind, we can define a few more terms:
+
+A **probability function** is a matehmatical function that describes the chance associated with a random variable
+having a particular outcome of falling with a given range of outcome values.
+
+We can also distinguish between *two* types of **probability functions**:
+
+1. *Probability Mass Functions (PMFs)* are associated with **discrete random variables.** These functions
+describe the probability that a random variable takes a particular discrete value.
+
+To be a valid *PMF*, a function ***f(x)*** must satisfy the following:
+
+1. There are ***k*** distinct outcomes ***x***~1~, ***x***~2~, ... ***x***~*k*~
+
+2. **0** ≤ *Pr*(***X*** = ***x***~1~) ≤  **1** for all ***x***~1~
+
+3. ∑ *Pr*(***X*** = ***x***~1~) for all ***x*** from ***x***~1~ to ***x***~*k*~ = **1**
+
+*Example: Flipping a Fair Coin*
+
+```{r}
+outcomes <- c("heads","tails")
+prob <- c(1/2,1/2)
+barplot(prob,ylim=c(0,0.6),names.arg=outcomes,space=0.1, xlab="outcome",ylab="Pr(X = outcome)",main="Probability Mass Function")
+```
+
+```{r}
+cumprob <- cumsum(prob)
+barplot(cumprob,names.arg=outcomes,space=0.1,xlab="outcome",ylab="Cumulative Pr(X)",main = "Cumulative Probability")
+```
+
+*Example: Rolling a Fair Die*
+
+```{r}
+outcomes <- c(1,2,3,4,5,6)
+prob <- c(1/6,1/6,1/6,1/6,1/6,1/6)
+barplot(prob,ylim=c(0,0.5),names.arg=outcomes,space=0.1,xlab="outcome",ylab="Pr(X = outcome)",main="Probability Mass Function")
+```
+
+```{r}
+cumprob <- cumsum(prob)
+barplot(cumprob,names.arg=outcomes,space=0.1,xlab="outcome",ylab="Cumulative Pr(X)",main = "Cumulative Probability")
+```
+
+(Back to the two kinds of probabulity functions, the first being *PMFs*, the second being:)
+
+2. *Probability Density Functions (PDFs)* are associated with continuous random variables. These functions
+describe the probability that a random variable falls within a given range of outcome values. The probability
+associated with that range equals the area under the density function for that range.
+
+To be a valid *PDF*, a function ***f(x)*** must satisfy the following:
+
+1. ***f(x)*** ≥  **0** for all −∞ ≤ ***x*** ≤ +∞. That is, the function ***f(x)*** is non-negative everywhere.
+
+2. ∫^+∞^~−∞~ ***f(x)*** d***x*** = **1**. That is, the total area under the function ***f(x)*** = **1**
+
+*An Example*
+
+The **Beta Distribution** refers to a family of continuous probability distributions defined over the interval
+[0, 1] and parametrized by two positive shape parameters, denoted by α and β, that appear as exponents of the
+random variable ***x*** and control the shape of the distribution.
     
-    
-    
+**Formula**: ***f(x)*** = ***K*** ***x***^α−1^ (**1**−***x***)^β−1^ 
+
+If we set **k** = 2, α = 2, and β = 1 and restrict the domain of ***x*** to [0, 1] it gices us a triangular
+function that we can graph as follows:
+
+```{r}
+library(ggplot2)
+a <- 2
+b <- 1
+K <- 2
+x <- seq(from= 0, to=1, by = 0.025)
+fx <- K*x^(a-1)*(1-x)^(b-1)
+lower_x <- seq(from=-0.25, to=0, by= 0.025) # add some values of x less than zero
+upper_x <- seq(from=1, to=1.25, by= 0.025) # add some values of x greater than one
+lower_fx <- rep(0,11) # add fx=0 values to x<0
+upper_fx <- rep(0,11) # add fx=0 values to x>1
+x <- c(lower_x,x,upper_x) # paste xs together
+fx <- c(lower_fx,fx,upper_fx) # paste fxs together
+d <- as.data.frame(cbind(x,fx))
+p <- ggplot(data = d, aes(x=x, y=fx)) + xlab("x") + ylab("f(x)") + geom_line()
+p
+```
+
+Is this a **PDF**? Why or why not?
+
+*Yes!* It satisfies **both** criteria for a *PDF* (see above):
+
+1. ***f(x)*** ≥  **0** for all −∞ ≤ ***x*** ≤ +∞.
+
+2. ∫^+∞^~−∞~ ***f(x)*** d***x*** = **1**
+
+The **cumulative distribution function**, or **CDF**, of a random variable is defined as the probability of
+observing a random variable ***X*** taking the value of ***x*** or less, i.e., ***F***(***x***) = *Pr*(***X*** ≤
+***x***).
+
+```{r}
+x <- seq(from=0, to=1, by=0.005)
+prob <- 0.5 * x * K*x^(a-1)*(1-x)^(b-1)
+barplot(prob,names.arg=x,space=0,main = "Cumulative Probability", xlab="x",ylab="Pr(X ≤ x)")
+```
+
+**IMPORTANT!** The built-in ***R*** function for the **Beta Distribution** [pbeta()], can give us the cumulative
+probability directly, if we specify values of α = 2 and β = 1.
+
+```{r}
+pbeta(0.75, 2, 1) # cumulative probability for x ≤ 0.75
+```
+
+We can define the **survival function** for a random variable ***X*** as **S**(***x***) = *Pr*(***X*** > ***x***) = 1 - *Pr*(***X*** ≤ ***x***) = 1 - ***f***(***x***)
+
+Finally, we can define the “qth” *quantile* of a *cumulative distibution function* as the value of ***x*** at which the *CDF* has the value “q”, i.e., ***F***(***x***~q~) = ***q***.
     
     
     
