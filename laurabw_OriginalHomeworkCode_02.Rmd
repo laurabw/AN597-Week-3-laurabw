@@ -1,6 +1,6 @@
 ---
 title: "laurabw_OriginalHomeworkCode_02"
-author: "Laura BW"
+author: "Laura Brubaker-Wittman"
 date: "9/24/2019"
 output: html_document
 ---
@@ -9,22 +9,49 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Problem:
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Every Saturday, at the same time, a primatologist goes and sits in the forest in the morning and listens for titi
+monkey calls, counting the number of calls they hear in a 2-hour window from 5am to 7am. Based on previous
+knowledge, she believes that the mean number calls she will hear in that time is exactly 15. Let ***X*** represent the appropriate Poisson random variable of the number of calls heard in each monitoring session.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+**Questions:**
 
-```{r cars}
-summary(cars)
+1. *What is the probability that she will hear more than 8 calls during any given session?*
+
+    For this one, I will use the ppois() function, since we want to know the cumulative probability of 9 - 15
+    calls.
+
+```{r}
+x <- 9:15 # The specific interval we are looking for probabilities for
+l <- 15 # How many we expect in an hour
+ppois(q = x, l)
 ```
 
-## Including Plots
+    So, based on this, the probability of hearing 9 or more titi calls is 56.8%
 
-You can also embed plots, for example:
+2. *What is the probability that she will hear no calls in a session?*
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+    Not sure how this one will work? But let's try using the same formula:
+
+```{r}
+x <- 0
+l <- 15
+ppois(q = 0, l)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+*Yikes!* So basically a **very** small chance of hearing 0 . That makes sense!
+    
+3. *What is the probability that she will hear exactly 3 calls in a session?*
+
+    Well, it seemed to work with setting it for just ) in the last question, let's see what happens when we set x
+    at 3 and not a range like in question 1.
+    
+```{r}
+x <- 3
+l <- 15
+ppois(q = x, l)
+```
+
+Ok, still a *really* number. While if the average is 15 and 3 is way below that, so a small probability for
+exactly 3 makes sense, I am not sure if this is how we sent up the function for this type of question.
