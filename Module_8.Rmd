@@ -397,3 +397,49 @@ density function* generally as follows:
 σ^2^~***X***~ = Variance of ***X*** = ∫^+∞^~−∞~ (***x***−μ~***X***~)^2^ ***f***(***x***) d***x***
 
 To demonstrate these numerically would require a bit of calculus, i.e., *integration*.
+
+*...Skipping down to section that applies to HW #2...*
+
+## **HOMEWORK:** *Poisson Distribution*
+
+The **Poisson Distribution** is often used to model open ended counts of independently occuring events, for
+example the number of cars that pass a traffic intersection over a given interval of time or the number of times
+a monkey scratches itself during a given observation interval. The *probability mass function* for the Poisson
+distribution is described by a single parameter, λ, where λ can be interpreted as the mean number of occurrences
+of the event in the given interval.
+
+The *probability mass function* for the **POISSON DISTRIBUTION** is:
+
+(not able to put in exactly how Chris has it, but this is close)
+
+***f***(***x***) = (λ^2^ *exp* (-λ)) / ***x***!
+
+where ***x*** = {0, 1, 2, ...}
+
+For this distribution, μ~***X***~ = λ and σ^2^~***X***~ = λ
+
+For this distribution, μ~***X***~ = λ and σ^2^~***X***~ = λ
+
+THEREFORE, mean and the variance are the **SAME**! (see above for mean and variance equations)
+
+Let's use ***R*** to look at the probability mass functions for different values of λ (lamda):
+
+```{r}
+x <- 0:10
+l = 3.5 # l is lamda 
+probset<-dpois(x=x,lambda=l)
+barplot(probset,names.arg=x,space=0,xlab="x",ylab="Pr(X = x)",main="Probability Mass Function")
+```
+
+Another example:
+
+```{r}
+x <- 0:20
+l = 10
+probset<-dpois(x=x,lambda=l)
+barplot(probset,names.arg=x,space=0,xlab="x",ylab="Pr(X = x)",main="Probability Mass Function")
+```
+
+**IMPORTANT!** We can also use the built in probability function for the **Poisson Distribution**, ppois(), to
+return the value of the cumulative distributuion function, i.e., the probability of observing up to and
+including a specific number of events in the given interval.
