@@ -53,6 +53,8 @@ l <- 15
 ppois(q = x, l)
 ```
 
+*Comment: Another way you can find these probabilities is to just assign the variable in the ppois() function. As in x = 3, l = 15.*
+
 Ok, still a *really* small number. While if the average is 15 and 3 is way below that, so a small probability for
 exactly 3 makes sense, I am not sure if this is how we sent up the function for this type of question.
 
@@ -69,7 +71,7 @@ Frequency",main="Probability of Titi Monkey Call Frequencies")
 
 WHAT?! Look at that! It kind of makes sense too, that the distribution for highest call frequency probability
 would be around 15, which is the average, and then taper off towards either end. I hope this is correct... or at
-least some version of correct!  
+least some version of correct!  *I got the same! I think that it makes sense... super low probabilities of very few or very many calls.*
 
 5. *Simulate 104 results from this distribution (i.e., 2 years of Saturday monitoring sessions).*
 
@@ -85,7 +87,7 @@ rpois(x,l)
 ```
 
 Ok, so this is the random set of numbers it built based on that infomration! Makes sense, and it would be
-different every time.    
+different every time.  *I also did the same thing here, and am wondering if we should be using the set.seed = TRUE so that they are the same set everytime??*  
 
 6. *Plot the simulated results using hist() and use xlim() to set the horizontal limits to be from 0 to 30. How
 does your histogram compare to the shape of the probability mass function you plotted above?*
@@ -112,15 +114,19 @@ with more and more sessions.
 Distribution formula meant. Once I watched a couple videos on YouTube, it started to make more sense!
 
 2. Still not completely comfortable about the differences between dpois and ppois, though the cumulative aspect
-of ppois makes sense. 
+of ppois makes sense. *I was wondering about this as well. From what I have seen online, the ppois() deals with the log distribution and dpois() deals with the log density.*
 
 3. Figuring out all the components of the barplots and histograms and how they need to be set up! The **Help**
 section in *R Studio* did provide a lot of guidance in this, but I still feel like I am just patching everything
 together each time. Hoping it will become more second nature with practice.
 
 4. Not sure if the answers for #2 and #3 are correct? Very small probabilities make sense, but want to know if I
-am setting up the functions correctly.
+am setting up the functions correctly. *I think they are correct, but I am a little confused by the output from #1*
 
 5. Just feeling really rusty with stats in general and feeling a bit overwhelmed with all the more advanced
-topics as I have not done even basic stats for awhile! But again, this will just take time and practice.
+topics as I have not done even basic stats for awhile! But again, this will just take time and practice. *SAME*
+
+*Overall it looks like you've got it down! I appreciate the clear annotations in the code. I think the only thing we both could use more help with is the clarification between the different functions used for a Poisson distribution.*
+
+--Mel 
     
