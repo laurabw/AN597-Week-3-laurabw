@@ -30,6 +30,23 @@ ppois(q = x, l)
 
 So, based on this, the probability of hearing 9 or more titi calls is 56.8%
 
+ ## *IMPORTANT!* This answer is actually wrong because this only looks at the probability of 9 through 15, when
+ really the question is asking for **any number** above 9. So, in order to do this:
+ 
+    For question #1, because we are looking for more than 8 (which is 9 to infinity technically, not 8 to 15).
+    This is why we do “1 – ppois ( x=8, l =15)” OR “ppois (8, 15, lower.tail=False)”,  OR “ppois(0:8, 15,
+    lower.tail=f, this will give 9 values, and the one we want is the last one because this is the cumulative.)
+    this will then include everything that is NOT 0-8, and everything 9 and above. Answer: .96255355 = 96.255%
+    
+Let's try this in R then:
+
+```{r}
+x <- 8 # The specific interval we are looking for probabilities for
+l <- 15 # How many we expect in an hour
+1 - ppois(q = x, l)
+```
+
+
 2. *What is the probability that she will hear no calls in a session?*
 
     Not sure how this one will work? But let's try using the same formula:
